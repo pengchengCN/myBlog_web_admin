@@ -8,6 +8,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -15,9 +17,10 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.16"
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.10.2"
   },
   "browserslist": [
     "> 1%",
