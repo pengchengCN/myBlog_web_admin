@@ -1,11 +1,12 @@
 <template>
   <el-container>
     <el-header ref="header">
-      <el-button plain style="" @click="$router.push('/login')">退出</el-button>
+      <span style="padding-right: 30px">用户：{{getUser.name}}</span>
+      <el-button plain @click="$router.push('/login')">退出</el-button>
     </el-header>
     <el-row>
       <el-col :span="3">
-        <el-aside style="width: 100%" :style="{height: navHeight + 'px'}">
+        <el-aside style="width: 100%" :style="{'min-height': navHeight + 'px',}">
           <MenuComp :menuData="menuData"></MenuComp>  
         </el-aside>
       </el-col>
@@ -18,6 +19,7 @@
   </el-container>
 </template>
 <script>
+import { mapGetters, mapActions } from "vuex"
 import util from '../common/util.js'
 import dao from '../common/dao.js'
 import MenuComp from '../components/MenuComp'
@@ -38,7 +40,7 @@ import MenuComp from '../components/MenuComp'
             href: 'articleList'
           },
           {
-            name: '写文章',
+            name: '新建文章',
             icon: 'el-icon-menu',
             href: 'articleWrite'
           },
@@ -62,10 +64,29 @@ import MenuComp from '../components/MenuComp'
     },
     watch: {
     },
+    beforeCreate () {
+      if (sessionStorage.user === undefined) {
+        util.messageMethod('error', '请先登录！！！')
+        return this.$router.push('/login')
+      }
+    },
+    computed: {
+      ...mapGetters(["getUser", "getCatList", "getLabList"])
+    },
     methods: {
+      ...mapActions(["setUser", "setCatList", "setLabList"]),
+      async initHome () {
+        let { data: { userObj } } = await dao.getUser({user: sessionStorage.user})
+        this.setUser(userObj)
+        let {data: { categoryList } } = await dao.catAll()
+        this.setCatList(categoryList)
+        let {data: { labelList } } = await dao.labAll()
+        this.setLabList(labelList)
+      }
     },
     mounted () {
       this.navHeight = document.body.clientHeight - this.$refs.header.$el.offsetHeight
+      this.initHome()
     }
   }
 </script>
@@ -84,7 +105,7 @@ import MenuComp from '../components/MenuComp'
   text-align: center;
 }
 .el-main {
-  background-color: #E9EEF3;
+  // background-color: #E9EEF3;
   color: #333;
 }
 </style>

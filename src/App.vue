@@ -26,4 +26,7 @@ a {
   transition: all 0.5s ease;
   letter-spacing: 0.02em;
 }
+label {
+  font-weight: 700;
+}
 </style>

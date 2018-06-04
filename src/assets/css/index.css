@@ -1,0 +1,25 @@
+.marginB40 {
+  margin-bottom: 40px;
+}
+/* 新建文章 */
+.article-textarea textarea {
+  padding-right: 40px;
+  resize: none;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #bfcbd9;
+}
+.el-form-item__label {
+  font-size: 16px
+}
+.upload_img > ul, .upload_img > ul >li {
+  display: inline;
+}
+.upload_img > ul >li > a {
+  display: inline-flex;
+  min-width: 300px
+}
+#articleWrite .el-select, 
+#articleWrite .el-date-editor.el-input, .el-date-editor.el-input__inner {
+  width: 100%
+}

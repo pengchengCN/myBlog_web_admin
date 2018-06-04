@@ -27,9 +27,25 @@ class Dao {
   login (body) {
     return this.apiPost('login', body)
   }
+  // 获取个人信息
+  getUser (body) {
+    return this.apiPost('getUser', body)
+  }
+  // 获取全部分类
+  catAll () {
+    return this.apiGet('categoryAll')
+  }
+  // 获取全部标签
+  labAll () {
+    return this.apiGet('labelAll')
+  }
   // 获取全部文章
   articleAll () {
     return this.apiGet('articleAll')
+  }
+  // 文章图片上传
+  articleImg (body) {
+    return this.apiPost('articleImg', body)
   }
 }
 const aDao = new Dao()

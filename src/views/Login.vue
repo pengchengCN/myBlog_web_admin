@@ -36,6 +36,7 @@ import dao from '../common/dao.js'
       async onSubmit () {
         this.loadingButton = true
         let {data: { data } } = await dao.login(this.form)
+        sessionStorage.user = this.form.user
         util.messageMethod('success', data)
         this.$router.push('/home/articleList')
       }
