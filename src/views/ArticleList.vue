@@ -16,7 +16,7 @@
       <el-table-column
         prop="article_id"
         label="文章ID"
-        width="150">
+        width="80">
       </el-table-column>
       <el-table-column
         prop="author"
@@ -25,16 +25,11 @@
       </el-table-column>
       <el-table-column
         prop="category_id"
-        label="所属分类"
-        width="120">
+        label="所属分类">
         <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>ID: {{ scope.row.name }}</p>
-            <p>名称: {{ scope.row.address }}</p>
             <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.author }}</el-tag>
+              <el-tag size="medium">{{ scope.row.category_id }}</el-tag>
             </div>
-          </el-popover>
         </template>
       </el-table-column>
       <el-table-column
@@ -49,8 +44,7 @@
       </el-table-column>
       <el-table-column
         prop="introduce_img"
-        label="介绍图片"
-        width="120">
+        label="介绍图片">
       </el-table-column>
       <el-table-column
         prop="introduce_text"
@@ -58,12 +52,12 @@
         width="400"
         >
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="text"
         label="内容"
         width="600"
         >
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         fixed="right"
         label="操作"

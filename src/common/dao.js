@@ -47,6 +47,10 @@ class Dao {
   articleImg (body) {
     return this.apiPost('articleImg', body)
   }
+  // 文章提交
+  newArticle (body) {
+    return this.apiPost('insertArticle', body)
+  }
 }
 const aDao = new Dao()
 export default aDao

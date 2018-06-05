@@ -48,7 +48,7 @@ export default {
   },
   watch: {
     value: function(val) {
-      console.log("init " + val);
+      // console.log("init " + val);
       if (this.status == INIT || tinymce.activeEditor.getContent() != val) {
         tinymce.activeEditor.setContent(val);
       }
@@ -71,7 +71,7 @@ export default {
         skin_url: "/tinymce/skins/lightgray",
         init_instance_callback: function(editor) {
           EDITOR = editor;
-          console.log("Editor: " + editor.id + " is now initialized.");
+          // console.log("Editor: " + editor.id + " is now initialized.");
           editor.on("input change undo redo", () => {
             var content = editor.getContent();
             _this.$emit("input", content);
